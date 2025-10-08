@@ -142,7 +142,7 @@ def fetch_asset(url: str) -> dict or None:
         return None, "Invalid URL"
 
     if url.startswith('rbxasset://'):
-        url = "./built-in/" + url[11:]
+        url = "../built-in/" + url[11:]
         return fetch_local_asset(url)
 
     asset_fetch_endpoint = 'https://assetdelivery.roblox.com/v1/asset/?id='
@@ -697,7 +697,7 @@ def append_to_fbx(doc, node, fbx_parent_id: int, desc: SceneDescription):
         mesh = None
         if node.mesh_blob is None:
             if node.mesh_type == "Head":
-                mesh = load_mesh("./built-in/sm_head.mesh")
+                mesh = load_mesh("../built-in/sm_head.mesh")
                 scale_xz = min(node.scale_x, node.scale_z)
                 node.scale_x = scale_xz
                 node.scale_z = scale_xz
@@ -705,7 +705,7 @@ def append_to_fbx(doc, node, fbx_parent_id: int, desc: SceneDescription):
                 node.scale_y = node.scale_y / 1.25
                 node.scale_z = node.scale_z / 1.25
             elif node.mesh_type == "Sphere":
-                mesh = load_mesh("./built-in/sm_sphere.mesh")
+                mesh = load_mesh("../built-in/sm_sphere.mesh")
                 node.scale_x = node.scale_x / 1.45
                 node.scale_y = node.scale_y / 1.45
                 node.scale_z = node.scale_z / 1.45
@@ -808,7 +808,7 @@ def export_roblox_model(model_desc) -> str:
     root = parse_model_desc(model_desc)
     # logger.message(str(root))
 
-    file_folder = "./Avatars/" + root.name + "/"
+    file_folder = "../Avatars/" + root.name + "/"
     file_name = file_folder + root.name + ".fbx"
 
     rot_y_180 = cframe_rotation_y(3.14159)
@@ -816,8 +816,8 @@ def export_roblox_model(model_desc) -> str:
 
     logger.message("Create FBX...")
     doc = fbx.FbxDocument(file_name)
-    sphere_geo = load_mesh_as_fbx_geo("./built-in/sphere.mesh", rot_y_180)
-    spike_geo = load_mesh_as_fbx_geo("./built-in/spike.mesh", cframe_multiply(rot_y_180, spike_pivot))
+    sphere_geo = load_mesh_as_fbx_geo("../built-in/sphere.mesh", rot_y_180)
+    spike_geo = load_mesh_as_fbx_geo("../built-in/spike.mesh", cframe_multiply(rot_y_180, spike_pivot))
 
     scene_desc = SceneDescription()
     scene_desc.textures_folder = file_folder
