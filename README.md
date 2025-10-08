@@ -21,7 +21,7 @@ Standalone Avatar Exporter + Batch Exporter
 3. Install the following plugin (or create a local plugin using source code from this repo)  
    https://www.roblox.com/library/6506050633/AvatarExporter  
    ![alt tag](https://raw.githubusercontent.com/SergeyMakeev/RobloxAvatarExporter/master/pics/plugin.png)
-4. Run `python FbxExporterServer.py`
+4. Run `python start_server.py` (or `python scripts/FbxExporterServer.py`)
 5. Open Roblox Studio and select an avatar you need to export  
    ![alt tag](https://raw.githubusercontent.com/SergeyMakeev/RobloxAvatarExporter/master/pics/select_avatar.png)
 6. Click `Avatar Exporter` button
@@ -35,7 +35,7 @@ Standalone Avatar Exporter + Batch Exporter
 2. Install the following plugin (or create a local plugin using source code from this repo)  
    https://www.roblox.com/library/6506050633/AvatarExporter
 3. Open `bundles.txt` (or `accessories.txt`) and type a list of avatar bundles you want to export
-4. Run `python FbxExporterServer.py`
+4. Run `python start_server.py` (or `python scripts/FbxExporterServer.py`)
 5. Open Roblox Studio and create an empty base plate
 6. Click `Batch Export` button
 7. Find the resulting avatar bundles exported to `.FBX` files in the `Avatars` folder
@@ -56,10 +56,10 @@ If you need to convert an existing ASCII FBX to Binary:
 
 ```bash
 # Convert single file
-python ascii_to_binary_fbx.py <input.fbx> [output.fbx]
+python convert_fbx.py <input.fbx> [output.fbx]
 
 # Convert all FBX files in a directory
-python ascii_to_binary_fbx.py Avatars/
+python convert_fbx.py Avatars/
 ```
 
 **Note:** Autodesk FBX Converter must be installed and in your PATH for automatic conversion to work.
